@@ -1,21 +1,25 @@
-﻿class Program
+﻿namespace ConsoleApp1
 {
-    static void Main(string[] args)
+    class Program
     {
-        int a = 10;
-        int b = 0;
-        try
+
+        static void Main(string[] args)
         {
-            int c = a / b;
-            Console.WriteLine(c);
+            CL<string> ct = new CL<string>("Message");
+            CL<int> ct2 = new CL<int>(7);
+            Test("GM");
+            Test(23);
         }
-        catch(DivideByZeroException)
+        public static void Test<T>(T msg)
         {
-            Console.WriteLine("Cannot divide by zero");
+            Console.WriteLine(msg);
         }
-        catch(Exception ex)
+    }
+    class CL<T>
+    {
+        public CL(T message)
         {
-            Console.WriteLine($"Exception Caught: {ex.Message}");
+            Console.WriteLine(message);
         }
     }
 }
