@@ -2,18 +2,26 @@
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            var setInt = new SortedSet<int>() { 5, 1, 4, 2, 3, 2};
-            var setString = new SortedSet<string>() { "Maria", "Ioannes", "Baptista", "Maria" };
-            foreach ( var item in setInt )
+            var stack = new Stack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+            Console.WriteLine("Stack:");
+            while(stack.Count > 0)
             {
-                Console.WriteLine("int - " + item);
+                Console.WriteLine(stack.Pop());
             }
-            foreach( var item in setString )
+            Console.WriteLine();
+            var queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            Console.WriteLine("Queue:");
+            while(queue.Count > 0)
             {
-                Console.WriteLine("str - " + item);
+                Console.WriteLine(queue.Dequeue());
             }
         }
     }
