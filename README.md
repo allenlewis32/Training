@@ -1,3 +1,3 @@
 Presidio Training Repo  
-Each section is uploaded in separate branch
+Each section is uploaded in a separate branch
 
