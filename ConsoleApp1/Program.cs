@@ -5,21 +5,16 @@
 
         static void Main(string[] args)
         {
-            CL<string> ct = new CL<string>("Message");
-            CL<int> ct2 = new CL<int>(7);
-            Test("GM");
-            Test(23);
-        }
-        public static void Test<T>(T msg)
-        {
-            Console.WriteLine(msg);
-        }
-    }
-    class CL<T>
-    {
-        public CL(T message)
-        {
-            Console.WriteLine(message);
+            var list = new List<string>() { "s1", "s2"};
+            list.Add("s3");
+            list.Add("s4");
+            list.Add("s5");
+            list.Remove("s3");
+            list.Add("s5");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
