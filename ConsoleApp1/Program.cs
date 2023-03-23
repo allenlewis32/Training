@@ -1,26 +1,28 @@
 ﻿class Program
 {
-    string name;
-    int id;
-    string dept;
-    float grade;
-    
-    Program(string name, int id, string dept, float grade)
-    {
-        this.name = name;
-        this.id = id;
-        this.dept = dept;
-        this.grade = grade;
-    }
     static void Main(string[] args)
     {
-        Program program = new Program("Allen Lewis", 2, "IT", 9.2f);
-        Program program2 = new Program("Maria Ioannes Baptista", 7, "CS", 9.7f);
-        program.PrintDetails();
-        program2.PrintDetails();
+        try
+        {
+            Console.Write("Enter your age: ");
+            int age = Convert.ToInt32(Console.ReadLine());
+            CheckAge(age);
+        }
+        catch (MyException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
-    void PrintDetails()
+    static void CheckAge(int age)
     {
-        Console.WriteLine($"Name: {name}\nID: {id}\nDept: {dept}\nGrade: {grade:0.00}\n");
+        if(age < 18)
+        {
+            throw new MyException("Must be atleast 18 to vote");
+        }
+        Console.WriteLine("You can Vote");
+    }
+    class MyException:Exception
+    {
+        public MyException(string msg):base(msg) { }
     }
 }
