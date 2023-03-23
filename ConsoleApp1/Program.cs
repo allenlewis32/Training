@@ -12,6 +12,10 @@
         this.dept = dept;
         this.grade = grade;
     }
+    ~Program()
+    {
+        Console.WriteLine("Destructor Called");
+    }
     static void Main(string[] args)
     {
         Program program = new Program("Allen Lewis", 2, "IT", 9.2f);
