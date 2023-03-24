@@ -4,24 +4,33 @@
     {
         static void Main(string[] args)
         {
-            var stack = new Stack<int>();
-            stack.Push(1);
-            stack.Push(2);
-            stack.Push(3);
-            Console.WriteLine("Stack:");
-            while(stack.Count > 0)
+            var ll = new LinkedList<int>();
+            ll.AddLast(1);
+            ll.AddLast(2);
+            ll.AddLast(3);
+            ll.AddLast(4);
+            ll.AddLast(5);
+            ll.AddLast(6);
+            ll.AddLast(4);
+            foreach(var node in FindNext(ll, 4))
             {
-                Console.WriteLine(stack.Pop());
+                ll.AddBefore(node, 10);
             }
-            Console.WriteLine();
-            var queue = new Queue<int>();
-            queue.Enqueue(1);
-            queue.Enqueue(2);
-            queue.Enqueue(3);
-            Console.WriteLine("Queue:");
-            while(queue.Count > 0)
+            foreach(var n in ll)
             {
-                Console.WriteLine(queue.Dequeue());
+                Console.WriteLine(n);
+            }
+        }
+        static IEnumerable<LinkedListNode<int>> FindNext(LinkedList<int> ll, int value)
+        {
+            LinkedListNode<int>? node = ll.First;
+            while (node != null)
+            {
+                if (node.Value == value)
+                {
+                    yield return node;
+                }
+                node = node.Next;
             }
         }
     }
