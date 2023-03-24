@@ -4,33 +4,26 @@
     {
         static void Main(string[] args)
         {
-            var ll = new LinkedList<int>();
-            ll.AddLast(1);
-            ll.AddLast(2);
-            ll.AddLast(3);
-            ll.AddLast(4);
-            ll.AddLast(5);
-            ll.AddLast(6);
-            ll.AddLast(4);
-            foreach(var node in FindNext(ll, 4))
+            Dictionary<int, char> d = new Dictionary<int, char>();
+            d.Add(1, 'a');
+            d.Add(2, 'b');
+            d.Add(3, 'c');
+            d.Add(4, 'd');
+            d[5] = 'e';
+            d[3] = 'z';
+            d.Remove(1);
+            foreach(var kv in d)
             {
-                ll.AddBefore(node, 10);
-            }
-            foreach(var n in ll)
-            {
-                Console.WriteLine(n);
-            }
-        }
-        static IEnumerable<LinkedListNode<int>> FindNext(LinkedList<int> ll, int value)
-        {
-            LinkedListNode<int>? node = ll.First;
-            while (node != null)
-            {
-                if (node.Value == value)
+                if(kv.Value == 'd')
                 {
-                    yield return node;
+                    d[kv.Key] = 'x';
                 }
-                node = node.Next;
+            }
+            Console.WriteLine(d.ContainsValue('c'));
+            Console.WriteLine(d.ContainsKey(2));
+            foreach(var kv in d)
+            {
+                Console.WriteLine(kv.Key + " " + kv.Value);
             }
         }
     }
