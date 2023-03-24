@@ -4,27 +4,32 @@
     {
         static void Main(string[] args)
         {
-            Dictionary<int, char> d = new Dictionary<int, char>();
-            d.Add(1, 'a');
-            d.Add(2, 'b');
-            d.Add(3, 'c');
-            d.Add(4, 'd');
-            d[5] = 'e';
-            d[3] = 'z';
-            d.Remove(1);
-            foreach(var kv in d)
+            SortedDictionary<string, string> sd = new SortedDictionary<string, string>();
+            sd.Add("d", "dog");
+            sd.Add("a", "apple");
+            sd.Add("c", "cat");
+            sd.Add("b", "ball");
+            sd.Add("3", "three");
+            sd.Add("1", "one");
+            sd.Add("2", "two");
+            sd.Remove("3");
+            foreach(var kv in sd.OrderBy(x => x.Value))
             {
-                if(kv.Value == 'd')
+                if (sd[kv.Key] == "one")
                 {
-                    d[kv.Key] = 'x';
+                    sd.Remove(kv.Key);
                 }
             }
-            Console.WriteLine(d.ContainsValue('c'));
-            Console.WriteLine(d.ContainsKey(2));
-            foreach(var kv in d)
+            foreach(var kv in sd.OrderBy(x => x.Value))
             {
-                Console.WriteLine(kv.Key + " " + kv.Value);
+                Console.WriteLine(kv);
             }
+            Console.WriteLine();
+            foreach(var kv in sd)
+            {
+                Console.WriteLine(kv);
+            }
+            Console.WriteLine(sd.GetValueOrDefault("10", "ten"));
         }
     }
 }
