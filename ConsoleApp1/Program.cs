@@ -6,14 +6,15 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            FileStream fs = new FileStream("c:\\Users\\HP\\Desktop\\test.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            fs.Write(Encoding.ASCII.GetBytes("Hello"));
-            fs.Close();
-
-            fs = new FileStream("c:\\Users\\HP\\Desktop\\test.txt", FileMode.Open, FileAccess.Read);
-            StreamReader streamReader = new StreamReader(fs);
-            Console.WriteLine(streamReader.ReadToEnd());
-            fs.Close();
+            const string path = "c:\\Users\\HP\\Desktop\\test.txt";
+            using(TextWriter writer = File.CreateText(path))
+            {
+                writer.Write("Test\nefw");
+            }
+            using(TextReader reader = File.OpenText(path))
+            {
+                Console.WriteLine(reader.ReadToEnd());
+            }
         }
     }
 }
