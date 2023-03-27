@@ -4,13 +4,16 @@
     {
         static void Main(string[] args)
         {
-            Volvo volvo = new();
-            volvo.start();
-            Console.WriteLine("Max speed: " + volvo.GetMaxSpeed());
-            volvo.stop();
-            volvo.ABS();
-            Car c = volvo;
-            c.ABS();
+            Fun1("Allen");
+            Fun2("Allen", 2);
+        }
+        static void Fun1(string name)
+        {
+            Console.WriteLine($"Name: {name}");
+        }
+        static void Fun2(string name, int id)
+        {
+            Console.WriteLine($"Name: {name}\nID: {id}");
         }
     }
 }
