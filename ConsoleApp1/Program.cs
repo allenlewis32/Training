@@ -4,25 +4,38 @@
     {
         static void Main(string[] args)
         {
-            C1 c = new C2();
-            c.M1();c.M2();
-            C2 c2 = new();
-            c2.M1(); c2.M2();
+            C c = new C();
+            c.a();
+            ((Ia)c).b();
+            c.c();
         }
     }
-    abstract class C1
+    public interface Ia
     {
-        public abstract void M1();
-        public void M2()
+        void a();
+        void b()
         {
-            Console.WriteLine("M2");
+            Console.WriteLine("ab");
+        }
+        void c();
+    }
+    public interface Ib: Ia
+    {
+        void a();
+        void b()
+        {
+            Console.WriteLine("bb");
         }
     }
-    class C2: C1
+    class C : Ib
     {
-        public override void M1()
+        public void a()
         {
-            Console.WriteLine("M1");
+            Console.WriteLine("ca");
+        }
+        public void c()
+        {
+            Console.WriteLine("cc");
         }
     }
 }
