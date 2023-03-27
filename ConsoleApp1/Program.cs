@@ -1,41 +1,19 @@
-﻿namespace ConsoleApp1
+﻿using System.Text;
+
+namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            C c = new C();
-            c.a();
-            ((Ia)c).b();
-            c.c();
-        }
-    }
-    public interface Ia
-    {
-        void a();
-        void b()
-        {
-            Console.WriteLine("ab");
-        }
-        void c();
-    }
-    public interface Ib: Ia
-    {
-        void a();
-        void b()
-        {
-            Console.WriteLine("bb");
-        }
-    }
-    class C : Ib
-    {
-        public void a()
-        {
-            Console.WriteLine("ca");
-        }
-        public void c()
-        {
-            Console.WriteLine("cc");
+            FileStream fs = new FileStream("c:\\Users\\HP\\Desktop\\test.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            fs.Write(Encoding.ASCII.GetBytes("Hello"));
+            fs.Close();
+
+            fs = new FileStream("c:\\Users\\HP\\Desktop\\test.txt", FileMode.Open, FileAccess.Read);
+            StreamReader streamReader = new StreamReader(fs);
+            Console.WriteLine(streamReader.ReadToEnd());
+            fs.Close();
         }
     }
 }
