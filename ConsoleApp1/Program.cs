@@ -4,16 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Fun1("Allen");
-            Fun2("Allen", 2);
-        }
-        static void Fun1(string name)
-        {
-            Console.WriteLine($"Name: {name}");
-        }
-        static void Fun2(string name, int id)
-        {
-            Console.WriteLine($"Name: {name}\nID: {id}");
+            Marks marks = new(475, 5);
+            Student student = new("AL", 23, 1, 2, marks);
+            Console.WriteLine("Percentage: " + student.GetPercent() + "%");
         }
     }
 }
