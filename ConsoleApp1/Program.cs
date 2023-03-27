@@ -4,22 +4,25 @@
     {
         static void Main(string[] args)
         {
-            C1 c1 = new C1();c1.Foo();
-            C2 c2 = new C2();c2.Foo();
+            C1 c = new C2();
+            c.M1();c.M2();
+            C2 c2 = new();
+            c2.M1(); c2.M2();
         }
     }
-    class C1
+    abstract class C1
     {
-        public virtual void Foo()
+        public abstract void M1();
+        public void M2()
         {
-            Console.WriteLine("C1");
+            Console.WriteLine("M2");
         }
     }
     class C2: C1
     {
-        public sealed override void Foo()
+        public override void M1()
         {
-            Console.WriteLine("C2");
+            Console.WriteLine("M1");
         }
     }
 }
