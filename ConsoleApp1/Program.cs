@@ -6,9 +6,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            const string path = "c:\\Users\\HP\\Desktop\\test.txt";
-            FileInfo fileInfo = new FileInfo(path);
-            fileInfo.Create();
+            const string path = "c:\\Users\\HP\\Desktop\\test";
+            DirectoryInfo info = new DirectoryInfo(path);
+            info.Create();
+            info.Delete();
         }
     }
 }
