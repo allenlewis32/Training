@@ -9,7 +9,6 @@ namespace ConsoleApp1
             const string path = "c:\\Users\\HP\\Desktop\\test";
             DirectoryInfo info = new DirectoryInfo(path);
             info.Create();
-            info.Delete();
         }
     }
 }
