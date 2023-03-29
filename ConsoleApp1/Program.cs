@@ -6,30 +6,21 @@ namespace ConsoleApp1
     {
         static async Task Main(string[] args)
         {
-            Task t = M1();
-            M2();
-            int n = await returnNumber();
-            Console.WriteLine(n);
-            await t;
+            var f = ReadFile("c:\\Users\\HP\\a.txt");
+            string msg = await f;
+            Console.WriteLine(msg);
         }
-        static Task<int> returnNumber()
+        static Task<string> ReadFile(string path)
         {
-            return Task.Run(() =>
+            var task = Task.Run(() =>
             {
-                Task.Delay(1000);
-                return 5;
+                FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read);
+                StreamReader r = new StreamReader(fs);
+                string contents = r.ReadToEnd();
+                return contents;
             });
-        }
-        static async Task M1()
-        {
-            Console.WriteLine("M1 started");
-            await Task.Delay(1000);
-            Console.WriteLine("M1 ended");
-        }
-        static void M2()
-        {
-            Console.WriteLine("M2 started");
-            Console.WriteLine("M2 ended");
+            Console.WriteLine("File opened");
+            return task;
         }
     }
 }
