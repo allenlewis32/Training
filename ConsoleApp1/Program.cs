@@ -6,11 +6,11 @@ namespace ConsoleApp1
     {
         static async Task Main(string[] args)
         {
-            M1();
+            Task t = M1();
             M2();
             int n = await returnNumber();
             Console.WriteLine(n);
-            Console.ReadLine();
+            await t;
         }
         static Task<int> returnNumber()
         {
@@ -20,7 +20,7 @@ namespace ConsoleApp1
                 return 5;
             });
         }
-        static async void M1()
+        static async Task M1()
         {
             Console.WriteLine("M1 started");
             await Task.Delay(1000);
