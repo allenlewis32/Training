@@ -2,28 +2,34 @@
 
 namespace ConsoleApp1
 {
-    class Program
+    public class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
-            Task t1 = M1();
-            Task t2 = M2();
-            Task t3 = Task.WhenAll (t1, t2);
-            await t3;
-            M3();
+            Console.Write("Enter the number of subjects: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the marks: ");
+            int[] marks = new int[n];
+            string[] input = Console.ReadLine().Split(' ');
+            for (int i = 0; i < n; i++)
+            {
+                marks[i] = Convert.ToInt32(input[i]);
+            }
+            float cgpa = CalculateCGPA(marks);
         }
-        static void M3() { Console.WriteLine("M3"); }
-        static async Task M1()
+        public static float CalculateCGPA(int[] marks)
         {
-            Console.WriteLine("M1 in");
-            await Task.Delay(2000);
-            Console.WriteLine("M1 out");
-        }
-        static async Task M2()
-        {
-            Console.WriteLine("M2 in");
-            await Task.Delay(1000);
-            Console.WriteLine("M2 out");
+            if(marks.Any(x => x > 100))
+            {
+                throw new Exception("Mark greater than max mark");
+            }
+            int n = marks.Length;
+            int total = marks.Sum();
+            float average = (float)total / n;
+            float cgpa = average / 10;
+            Console.WriteLine($"Average: {average:0.##}");
+            Console.WriteLine($"CGPA: {cgpa:0.##}");
+            return cgpa;
         }
     }
 }
